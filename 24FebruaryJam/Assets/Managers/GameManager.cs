@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        SetupObjectPool();
+        SetupObjectPools();
     }
 
-    void SetupObjectPool()
+    void SetupObjectPools()
     {
         ObjectPooler.SetupPool(defaultProjectilePrefab, 100, "DefaultProjectile");
     }

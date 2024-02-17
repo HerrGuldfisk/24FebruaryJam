@@ -39,7 +39,7 @@ public class Firearm : MonoBehaviour
         if (inputMagnitude > 0.1f && DefaultGunCooldown <= 0)
         {
             //Projectile projectile = Instantiate(DefaultProjectile, transform.position, transform.localRotation, null);
-            Projectile projectile = ObjectPooler.DequeuObject<Projectile>("DefaultProjectile");
+            Projectile projectile = ObjectPooler.DequeuObject<Projectile>("TenDefaultProjectile");
             projectile.transform.position = transform.position;
             projectile.transform.rotation = Quaternion.LookRotation(inputDirection.normalized);
             projectile.Damage = DefaultGun.Damage.Value;
