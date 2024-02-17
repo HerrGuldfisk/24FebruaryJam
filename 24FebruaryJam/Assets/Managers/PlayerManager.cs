@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
 
     public List<Transform> spawnPoints;
 
-    private List<GameObject> spawnedPlayers = new();
+    static private List<GameObject> spawnedPlayers = new();
 
     // Update is called once per frame
     void Update()
@@ -29,4 +29,14 @@ public class PlayerManager : MonoBehaviour
         playerInput.gameObject.GetComponent<CharacterController>().transform.position = spawnPoints[playerInput.playerIndex].position;
         playerInput.gameObject.GetComponent<CharacterController>().enabled = true;
     }
+
+    /*
+    public static Vector3 GetClosestplayerPosition(Vector3 position)
+    {
+        for (int i = 0; i < spawnedPlayers.Count; i++)
+        {
+
+        }
+    }
+    */
 }

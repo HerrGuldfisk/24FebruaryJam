@@ -27,8 +27,16 @@ public class Projectile : MonoBehaviour
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "DefaultProjectile");
         }
+        else if (other.TryGetComponent(out IDamagable enemy))
+        {
+            enemy.TakeDamage(Damage);
+            // Add animation later.
 
-        
+            // Move pooling behaviour to teh hit unit.
+            // ObjectPooler.EnqueuObject(this, "DefaultProjectile");
+        }
+
+
     }
 
     private void Update()
