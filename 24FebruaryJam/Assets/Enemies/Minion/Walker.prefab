@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5285196
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.866144
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_LocalRotation.x
@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -49,9 +49,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 344aca995b86d1e4e85fc43b975f11f2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 338896cbaa9507247a90c7e8fca80d7d, type: 2}
     - target: {fileID: 919132149155446097, guid: cd1e4edae8daeb04ebe73e59264c1685, type: 3}
       propertyPath: m_Name
       value: Walker

@@ -6,6 +6,7 @@ public class PoolManager : MonoBehaviour
 {
     public Projectile defaultProjectilePrefab;
 
+
     private void Awake()
     {
         SetupObjectPools();

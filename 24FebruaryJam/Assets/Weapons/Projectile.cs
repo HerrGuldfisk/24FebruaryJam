@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [HideInInspector] public float Damage;
+    public PlayerStats PlayerStats;
+
+    [HideInInspector] public virtual float Damage { get; set; }
 
     public Rigidbody RB;
 
@@ -12,12 +14,21 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out EnemyController enemyController))
+
+        if (other.TryGetComponent(out EnemyWeakness enemyWeakness))
+        {
+            enemyWeakness.Enemy.TakeDamage(Damage * 2);
+            // Add animation later.
+            ObjectPooler.EnqueuObject(this, "DefaultProjectile");
+        }
+        else if (other.TryGetComponent(out EnemyController enemyController))
         {
             enemyController.TakeDamage(Damage);
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "DefaultProjectile");
         }
+
+        
     }
 
     private void Update()
