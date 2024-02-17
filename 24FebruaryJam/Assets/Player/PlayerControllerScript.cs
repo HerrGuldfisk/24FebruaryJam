@@ -29,17 +29,12 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Update() {
         UpdateMovement();
-        UpdateRotation();
+        // UpdateRotation();
     }
 
     void UpdateMovement() {
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
         controller.Move(move * Time.deltaTime * playerStats.MoveSpeed.Value);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
     }
 
     void UpdateRotation() {

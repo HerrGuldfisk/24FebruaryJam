@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Firearm : MonoBehaviour
 {
-    Vector2 inputDirection = Vector2.zero;
+    Vector3 inputDirection = Vector2.zero;
+    float inputMagnitude = 0f;
 
     public DefaultGun DefaultGun {  get; private set; } = new DefaultGun();
     public Projectile DefaultProjectile;
@@ -14,14 +15,17 @@ public class Firearm : MonoBehaviour
     public void OnLook(InputValue input)
     {
         Vector2 newInput = input.Get<Vector2>();
+        inputMagnitude = newInput.magnitude;
 
-        if(newInput.magnitude > 0.1f)
+        if(inputMagnitude > 0.1f)
         {
-            inputDirection = input.Get<Vector2>();
+            inputDirection = new(newInput.x, 0, newInput.y);
 
-            Vector3 lookDirection = new (inputDirection.x, 1, inputDirection.y);
-
-            transform.rotation = Quaternion.LookRotation(lookDirection.normalized);
+            transform.rotation = Quaternion.LookRotation(inputDirection.normalized);
+        }
+        else
+        {
+            inputDirection = Vector2.zero;
         }
     }
 
@@ -32,12 +36,11 @@ public class Firearm : MonoBehaviour
             DefaultGunCooldown -= Time.deltaTime;
         }
 
-        if (inputDirection.magnitude > 0.1f && DefaultGunCooldown <= 0)
+        if (inputMagnitude > 0.1f && DefaultGunCooldown <= 0)
         {
-            Projectile projectile = Instantiate(DefaultProjectile, transform.position, Quaternion.identity, transform.root);
+            Projectile projectile = Instantiate(DefaultProjectile, transform.position, transform.localRotation, null);
             projectile.Damage = DefaultGun.Damage.Value;
-            projectile.RB.linearVelocity = transform.forward * DefaultGun.ProjectileSpeed.Value;
-
+            projectile.RB.linearVelocity = inputDirection.normalized * DefaultGun.ProjectileSpeed.Value;
             DefaultGunCooldown = DefaultGun.Cooldown.Value;
         }
     }
