@@ -336,7 +336,7 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: 8c8e490b-c610-4785-884f-f04217b23ca4
-      m_Path: <Pointer>/delta
+      m_Path: <Pointer>/position
       m_Interactions: 
       m_Processors: 
       m_Groups: ;Keyboard&Mouse;Touch
