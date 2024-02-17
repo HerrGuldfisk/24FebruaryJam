@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityParticleSystem;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,13 +8,25 @@ public class Projectile : MonoBehaviour
 
     public Rigidbody RB;
 
+    float lifetime = 10.0f;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out EnemyController enemyController))
         {
             enemyController.TakeDamage(Damage);
             // Add animation later.
-            Destroy(gameObject);
+            ObjectPooler.EnqueuObject(this, "DefaultProjectile");
+        }
+    }
+
+    private void Update()
+    {
+        lifetime -= Time.deltaTime;
+
+        if (lifetime < 0.0f)
+        {
+            ObjectPooler.EnqueuObject(this, "DefaultProjectile");
         }
     }
 }
