@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class EnemyShield : MonoBehaviour
+public class EnemyShield : MonoBehaviour, IDamagable
 {
-    private void OnCollisionEnter(Collision collision)
+    public void TakeDamage(float damage)
     {
-        Debug.Log("Contact");
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

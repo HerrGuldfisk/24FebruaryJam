@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
             // Add animation later.
 
             // Move pooling behaviour to teh hit unit.
-            // ObjectPooler.EnqueuObject(this, "DefaultProjectile");
+            ObjectPooler.EnqueuObject(this, "DefaultProjectile");
         }
 
 
