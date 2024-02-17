@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyShield : MonoBehaviour, IDamagable
 {
+
     WaitForSecondsRealtime shieldCooldownTime = new WaitForSecondsRealtime(5f);
     public void TakeDamage(float damage)
     {
@@ -12,12 +13,21 @@ public class EnemyShield : MonoBehaviour, IDamagable
 
     IEnumerator ShieldCooldown()
     {
-        gameObject.GetComponent<MeshCollider>().enabled = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        MeshCollider meshCollider;
+        MeshRenderer meshRenderer;
+
+        if (gameObject.TryGetComponent(out meshCollider))
+        { meshCollider.enabled = false; }
+
+        if (gameObject.TryGetComponent(out meshRenderer))
+        { meshRenderer.enabled = false; }
 
         yield return shieldCooldownTime;
 
-        gameObject.GetComponent<MeshCollider>().enabled = true;
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        if (gameObject.TryGetComponent(out meshCollider))
+        { meshCollider.enabled = true; }
+
+        if (gameObject.TryGetComponent(out meshRenderer))
+        { meshRenderer.enabled = true; }
     }
 }

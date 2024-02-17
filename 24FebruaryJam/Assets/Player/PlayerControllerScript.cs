@@ -9,7 +9,6 @@ public class PlayerControllerScript : MonoBehaviour
     private CharacterController controller;
     public PlayerStats playerStats = new();
 
-
     private Vector2 movementInput = Vector2.zero;
     private Vector2 lookInput = Vector2.zero;
     [SerializeField]
@@ -29,7 +28,6 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Update() {
         UpdateMovement();
-        // UpdateRotation();
     }
 
     void UpdateMovement() {
@@ -37,15 +35,18 @@ public class PlayerControllerScript : MonoBehaviour
         controller.Move(move * Time.deltaTime * playerStats.MoveSpeed.Value);
     }
 
-    void UpdateRotation() {
-        if (Mathf.Abs(lookInput.x) > 0 || Mathf.Abs(lookInput.y) > 0)
+    public void TakeDamage(float damage)
+    {
+        playerStats.CurrentHP -= damage;
+
+        if (playerStats.CurrentHP <= 0)
         {
-            Vector3 playerDir = Vector3.right * lookInput.x + Vector3.forward * lookInput.y;
-            if (playerDir.sqrMagnitude > 0.0f)
-            {
-                Quaternion newrotation = Quaternion.LookRotation(playerDir, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, newrotation, rotationSmoothing * Time.deltaTime);
-            }
+            Death();
         }
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 }
