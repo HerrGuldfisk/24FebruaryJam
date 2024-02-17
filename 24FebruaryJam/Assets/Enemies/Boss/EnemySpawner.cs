@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject minion;
 
-    private float BaseCooldownTime = 1;
+    private float BaseCooldownTime = 1f;
     private float spawnCooldown = 1;
     
     void Update()

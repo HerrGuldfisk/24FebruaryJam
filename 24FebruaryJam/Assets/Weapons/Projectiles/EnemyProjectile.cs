@@ -8,6 +8,11 @@ public class EnemyProjectile : MonoBehaviour
 
     float lifetime = 10.0f;
 
+    private void OnEnable()
+    {
+        lifetime = 10f;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out PlayerControllerScript playerController))

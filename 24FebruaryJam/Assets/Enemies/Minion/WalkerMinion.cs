@@ -16,8 +16,8 @@ public class WalkerMinion : EnemyController
 
     private void InitializeStats()
     {
-        EnemyStats.MoveSpeed.BaseValue = 3 + PlayerManager.spawnedPlayers.Count;
-        EnemyStats.MaxHP.BaseValue = 10 + 10 * PlayerManager.spawnedPlayers.Count;
+        EnemyStats.MoveSpeed.BaseValue = 2;
+        EnemyStats.MaxHP.BaseValue = 15;
         EnemyStats.CurrentHP = EnemyStats.MaxHP.Value;
     }
 

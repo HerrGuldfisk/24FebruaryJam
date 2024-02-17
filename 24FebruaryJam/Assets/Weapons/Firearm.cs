@@ -31,12 +31,7 @@ public class Firearm : MonoBehaviour
 
     private void Update()
     {
-        if(DefaultGunCooldown > 0)
-        {
-            DefaultGunCooldown -= Time.deltaTime;
-        }
-
-        if (inputMagnitude > 0.1f && DefaultGunCooldown <= 0)
+        if (inputMagnitude > 0.1f && DefaultGunCooldown <= Time.time)
         {
             //Projectile projectile = Instantiate(DefaultProjectile, transform.position, transform.localRotation, null);
             Projectile projectile = ObjectPooler.DequeuObject<Projectile>("DefaultProjectile");
@@ -44,7 +39,7 @@ public class Firearm : MonoBehaviour
             projectile.transform.rotation = Quaternion.LookRotation(inputDirection.normalized);
             projectile.Damage = DefaultGun.Damage.Value;
             projectile.RB.linearVelocity = inputDirection.normalized * DefaultGun.ProjectileSpeed.Value;
-            DefaultGunCooldown = DefaultGun.Cooldown.Value;
+            DefaultGunCooldown = Time.time + DefaultGun.Cooldown.Value;
             projectile.gameObject.SetActive(true);
         }
     }
