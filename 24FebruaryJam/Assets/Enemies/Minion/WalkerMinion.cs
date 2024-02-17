@@ -9,6 +9,7 @@ public class WalkerMinion : EnemyController
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        characterController = GetComponent<CharacterController>();
         graphics = transform.GetChild(0);
         InitializeStats();
     }
@@ -26,7 +27,7 @@ public class WalkerMinion : EnemyController
         if(PlayerManager.spawnedPlayers.Count > 0 && PlayerManager.GetClosestplayerPosition(transform.position, out Vector3 target))
         {
             characterController.Move((target - transform.position).normalized * EnemyStats.MoveSpeed.Value * Time.deltaTime);
-            graphics.LookAt(target - transform.position);
+            transform.rotation = Quaternion.LookRotation(target - transform.position, Vector3.up);
         }
     }
 }

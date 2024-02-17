@@ -49,10 +49,13 @@ public class PlayerManager : MonoBehaviour
                 closestPlayerIndex = i;
             }
         }
-
+ 
         target = spawnedPlayers[closestPlayerIndex].transform.position;
 
         return closestPlayerIndex > -1 ? true : false;
+
+
+        
     }
     
 }
