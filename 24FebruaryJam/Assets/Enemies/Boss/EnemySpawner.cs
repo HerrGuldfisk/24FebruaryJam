@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnUnit()
     {
 
-        var vector2 = Random.insideUnitCircle.normalized * 6;
+        var vector2 = Random.insideUnitCircle.normalized * 5;
         Vector3 position = new Vector3(vector2.x, 0, vector2.y);
 
 
