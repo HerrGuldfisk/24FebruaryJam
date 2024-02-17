@@ -97,3 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a448f240bb4eca499e03f7549e87b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoints:
+  - {fileID: 6519038687883612043, guid: 1ca95c2b6cef238418d2973ddfc2cc98, type: 3}
+  - {fileID: 8450980821128418061, guid: 3ebfea9251fc4d8409f09a12fe95f208, type: 3}
+  - {fileID: 2672267048518023883, guid: 5319650c8dff0244db93114ca9b14f63, type: 3}
+  - {fileID: 2058812158058569422, guid: 9cd983a43c76ca74f8cb4fa61a2a4f40, type: 3}
