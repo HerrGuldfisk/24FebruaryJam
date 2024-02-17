@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
 
     public Rigidbody RB;
 
-    float lifetime = 6.0f;
+    float lifetime = 10.0f;
 
     private void OnTriggerEnter(Collider other)
     {
