@@ -1,16 +1,10 @@
+using Replayer.Stats;
 using UnityEngine;
 
-public class DefaultGun : Firearm
+public class DefaultGun : WeaponData
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public CharacterStat Cooldown { get; set; } = new CharacterStat(1);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public CharacterStat Damage { get; set; } = new CharacterStat(10);
+    public CharacterStat ProjectileSpeed { get; set; } = new CharacterStat(12);
 }
