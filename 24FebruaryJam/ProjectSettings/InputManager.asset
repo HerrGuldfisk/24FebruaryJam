@@ -564,7 +564,7 @@ MonoBehaviour:
     m_Asset: {fileID: 6934280567975337509}
     m_Actions:
     - m_Name: Move
-      m_Type: 0
+      m_Type: 2
       m_ExpectedControlType: Vector2
       m_Id: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
       m_Processors: 
@@ -572,7 +572,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 1
     - m_Name: Look
-      m_Type: 0
+      m_Type: 2
       m_ExpectedControlType: Vector2
       m_Id: 6b444451-8a00-4d00-a97e-f47457f736a8
       m_Processors: 
