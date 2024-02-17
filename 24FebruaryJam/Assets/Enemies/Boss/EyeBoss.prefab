@@ -462,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3095648618190736441}
   - component: {fileID: 3376608101414529477}
-  - component: {fileID: 8335467575661246118}
+  - component: {fileID: 1410467128478082959}
   m_Layer: 0
   m_Name: EyeBoss
   m_TagString: Untagged
@@ -483,11 +483,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 662106887247608251}
   - {fileID: 1489119969455301096}
+  - {fileID: 7467173150995105819}
   - {fileID: 4931693272239046611}
   - {fileID: 2261862032941350780}
-  - {fileID: 7467173150995105819}
-  - {fileID: 662106887247608251}
   - {fileID: 6250683687750016064}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -514,7 +514,7 @@ CapsuleCollider:
   m_Height: 7.42
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8335467575661246118
+--- !u!114 &1410467128478082959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -523,9 +523,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2431421156390098563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9a1b6758329504494578fe8ca25e65, type: 3}
+  m_Script: {fileID: 11500000, guid: f3a260b5d965ba14ea221fefa88a2a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ringParts: []
+  ringHolder: {fileID: 7962660430407677445}
 --- !u!1 &2715290434577764282
 GameObject:
   m_ObjectHideFlags: 0
