@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultProjectilePrefab: {fileID: 4771021823689590397, guid: 0ee53cbda0daa224eb103922f5ce9a0d, type: 3}
+  enemyDefaultProjectilePrefab: {fileID: 8660622148570673090, guid: 267d18fe1e83fa84aacad4b2c0136927, type: 3}
