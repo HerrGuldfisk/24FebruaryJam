@@ -9,9 +9,9 @@ public class PlayerControllerScript : MonoBehaviour
     private CharacterController controller;
     public PlayerStats playerStats = new();
 
+
     private Vector2 movementInput = Vector2.zero;
     private Vector2 lookInput = Vector2.zero;
-
     [SerializeField]
     private float rotationSmoothing = 100.0f;
 
@@ -19,9 +19,9 @@ public class PlayerControllerScript : MonoBehaviour
         movementInput = inputValue.Get<Vector2>();
     }
 
-    /*public void OnLook(InputValue inputValue) {
+    public void OnLook(InputValue inputValue) {
         lookInput = inputValue.Get<Vector2>();
-    }*/
+    }
 
     private void Start() {
         controller = gameObject.GetComponent<CharacterController>();
@@ -29,7 +29,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Update() {
         UpdateMovement();
-        //UpdateRotation();
+        UpdateRotation();
     }
 
     void UpdateMovement() {
