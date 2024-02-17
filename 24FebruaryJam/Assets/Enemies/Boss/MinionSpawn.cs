@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MinionSpawn : Action
+public class MinionSpawn : MonoBehaviour
 {
     
 }
