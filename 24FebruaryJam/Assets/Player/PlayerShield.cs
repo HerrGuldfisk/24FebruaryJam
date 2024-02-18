@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShield : MonoBehaviour, IDamagable
+public class PlayerShield : MonoBehaviour, IDamagable
 {
 
     WaitForSecondsRealtime shieldCooldownTime = new WaitForSecondsRealtime(6f);

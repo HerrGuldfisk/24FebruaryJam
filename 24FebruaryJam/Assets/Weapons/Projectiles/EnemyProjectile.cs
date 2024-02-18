@@ -21,7 +21,11 @@ public class EnemyProjectile : MonoBehaviour
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "EnemyDefaultProjectile");
         }
-
+        else if (other.TryGetComponent(out PlayerShield playerShield))
+        {
+            // Add animation later.
+            ObjectPooler.EnqueuObject(this, "EnemyDefaultProjectile");
+        }
     }
 
     private void Update()
