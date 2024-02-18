@@ -8,6 +8,11 @@ public class EnemyProjectile : MonoBehaviour
 
     float lifetime = 10.0f;
 
+    private void OnEnable()
+    {
+        lifetime = 10f;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out PlayerControllerScript playerController))
@@ -16,7 +21,12 @@ public class EnemyProjectile : MonoBehaviour
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "EnemyDefaultProjectile");
         }
-
+        else if (other.TryGetComponent(out PlayerShield playerShield))
+        {
+            playerShield.TakeDamage(Damage);
+            // Add animation later.
+            ObjectPooler.EnqueuObject(this, "EnemyDefaultProjectile");
+        }
     }
 
     private void Update()

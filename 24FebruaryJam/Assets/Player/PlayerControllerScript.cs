@@ -14,6 +14,8 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField]
     private float rotationSmoothing = 100.0f;
 
+    private float gravity;
+
     public void OnMove(InputValue inputValue) {
         movementInput = inputValue.Get<Vector2>();
     }
@@ -31,7 +33,13 @@ public class PlayerControllerScript : MonoBehaviour
     }
 
     void UpdateMovement() {
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
+        if (gameObject.transform.position.y > 0)
+        {
+            gravity = -9.82f;
+        }
+        else { gravity = 0f; }
+
+        Vector3 move = new Vector3(movementInput.x, gravity, movementInput.y);
         controller.Move(move * Time.deltaTime * playerStats.MoveSpeed.Value);
     }
 

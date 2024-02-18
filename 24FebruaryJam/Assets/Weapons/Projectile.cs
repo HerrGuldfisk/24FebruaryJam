@@ -10,25 +10,32 @@ public class Projectile : MonoBehaviour
 
     public Rigidbody RB;
 
-    float lifetime = 10.0f;
+    float lifetime = 4f;
+
+    private void OnEnable()
+    {
+        lifetime = 4f;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.TryGetComponent(out EnemyWeakness enemyWeakness))
         {
+            
             enemyWeakness.Enemy.TakeDamage(Damage * 2);
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "DefaultProjectile");
         }
         else if (other.TryGetComponent(out EnemyController enemyController))
         {
+            
             enemyController.TakeDamage(Damage);
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "DefaultProjectile");
         }
         else if (other.TryGetComponent(out IDamagable enemy))
         {
+            
             enemy.TakeDamage(Damage);
             // Add animation later.
 
