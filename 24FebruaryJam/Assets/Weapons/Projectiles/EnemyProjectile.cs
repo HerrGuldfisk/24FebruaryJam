@@ -23,6 +23,7 @@ public class EnemyProjectile : MonoBehaviour
         }
         else if (other.TryGetComponent(out PlayerShield playerShield))
         {
+            playerShield.TakeDamage(Damage);
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "EnemyDefaultProjectile");
         }
