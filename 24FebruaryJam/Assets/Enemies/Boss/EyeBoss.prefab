@@ -647,8 +647,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a260b5d965ba14ea221fefa88a2a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringParts: []
-  ringHolder: {fileID: 7962660430407677445}
+  RingParts: []
+  RingHolder: {fileID: 7962660430407677445}
+  IsPhaseChanging: 0
+  IsInvincible: 0
+  EyeGO: {fileID: 6940415223308500692}
+  BodyOneGO: {fileID: 2715290434577764282}
+  BodyTwoGO: {fileID: 3172335588181165887}
+  BodyThreeGO: {fileID: 1555163696433626092}
+  LastBody: {fileID: 3619142424426131438}
 --- !u!1 &2715290434577764282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,7 +3625,7 @@ Transform:
   m_GameObject: {fileID: 6940415223308500692}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 2.8669095, z: 0}
+  m_LocalPosition: {x: 0, y: 2.86691, z: 0}
   m_LocalScale: {x: 482.513, y: 482.513, z: 267.60623}
   m_ConstrainProportionsScale: 0
   m_Children: []
