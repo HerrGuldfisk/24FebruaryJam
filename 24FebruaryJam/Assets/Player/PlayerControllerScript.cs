@@ -53,6 +53,11 @@ public class PlayerControllerScript : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        PlayerManager.spawnedPlayers.Remove(gameObject)
+;    }
+
     private void Death()
     {
         Destroy(gameObject);
