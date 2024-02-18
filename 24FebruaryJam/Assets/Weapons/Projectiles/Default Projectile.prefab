@@ -149,4 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe155ca9b67c3b4181757ecbee40334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VFXHitGraphics: {fileID: 8249258333813121649, guid: 0ff184c95c881a741ade6abdb2267ea1, type: 3}
   RB: {fileID: 8779940421968783956}
