@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     public PlayerStats PlayerStats;
 
+    public GameObject VFXHitGraphics;
+
     [HideInInspector] public virtual float Damage { get; set; }
 
     public Rigidbody RB;
@@ -21,21 +23,21 @@ public class Projectile : MonoBehaviour
     {
         if (other.TryGetComponent(out EnemyWeakness enemyWeakness))
         {
-            
+            VFXHit(transform.position);
             enemyWeakness.Enemy.TakeDamage(Damage * 2);
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "DefaultProjectile");
         }
         else if (other.TryGetComponent(out EnemyController enemyController))
         {
-            
+            VFXHit(transform.position);
             enemyController.TakeDamage(Damage);
             // Add animation later.
             ObjectPooler.EnqueuObject(this, "DefaultProjectile");
         }
         else if (other.TryGetComponent(out IDamagable enemy))
         {
-            
+            VFXHit(transform.position);
             enemy.TakeDamage(Damage);
             // Add animation later.
 
@@ -44,6 +46,12 @@ public class Projectile : MonoBehaviour
         }
 
 
+    }
+
+    void VFXHit(Vector3 position)
+    {
+        GameObject effect = Instantiate(VFXHitGraphics, position, Quaternion.identity, null);
+        Destroy(effect, 1);
     }
 
     private void Update()
