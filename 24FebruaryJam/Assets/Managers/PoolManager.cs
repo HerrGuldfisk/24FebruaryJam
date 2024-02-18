@@ -6,7 +6,7 @@ public class PoolManager : MonoBehaviour
 {
     public Projectile defaultProjectilePrefab;
     public EnemyProjectile enemyDefaultProjectilePrefab;
-
+    public BossProjectile bossProjectilePrefab;
 
     private void Awake()
     {
@@ -15,8 +15,10 @@ public class PoolManager : MonoBehaviour
 
     void SetupObjectPools()
     {
-        ObjectPooler.SetupPool(defaultProjectilePrefab, 100, "DefaultProjectile");
+        ObjectPooler.SetupPool(defaultProjectilePrefab, 500, "DefaultProjectile");
 
-        ObjectPooler.SetupPool(enemyDefaultProjectilePrefab, 200, "EnemyDefaultProjectile");
+        ObjectPooler.SetupPool(enemyDefaultProjectilePrefab, 300, "EnemyDefaultProjectile");
+
+        ObjectPooler.SetupPool(bossProjectilePrefab, 300, "BossDefaultProjectile");
     }
 }

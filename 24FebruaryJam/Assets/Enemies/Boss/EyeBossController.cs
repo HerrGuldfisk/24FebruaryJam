@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EyeBossController : EnemyController
 {
@@ -23,6 +24,8 @@ public class EyeBossController : EnemyController
     public GameObject BodyThreeGO;
 
     public GameObject LastBody;
+    public DefaultGun DefaultGun { get; private set; } = new DefaultGun();
+    public BossProjectile DefaultProjectile;
 
     private float timeStamp;
     private float cooldownPeriodInSeconds = 2f;
@@ -163,12 +166,32 @@ public class EyeBossController : EnemyController
 
     void PhaseOne()
     {
-        
+        if (timeStamp <= Time.time)
+        {
+            BossProjectile projectile = ObjectPooler.DequeuObject<BossProjectile>("BossDefaultProjectile");
+            projectile.transform.position = transform.position;
+            projectile.transform.rotation = Quaternion.identity;
+            projectile.Damage = DefaultGun.Damage.Value;
+            projectile.RB.linearVelocity = Vector3.forward * DefaultGun.ProjectileSpeed.Value;
+            projectile.gameObject.SetActive(true);
+
+            timeStamp = Time.time + cooldownPeriodInSeconds;
+        }
     }
 
     void PhaseTwo()
     {
-        
+        if (timeStamp <= Time.time)
+        {
+            BossProjectile projectile = ObjectPooler.DequeuObject<BossProjectile>("BossDefaultProjectile");
+            projectile.transform.position = transform.position;
+            projectile.transform.rotation = Quaternion.identity;
+            projectile.Damage = DefaultGun.Damage.Value;
+            projectile.RB.linearVelocity = Vector3.forward * DefaultGun.ProjectileSpeed.Value;
+            projectile.gameObject.SetActive(true);
+
+            timeStamp = Time.time + cooldownPeriodInSeconds;
+        }
     }
 
     void PhaseThree()

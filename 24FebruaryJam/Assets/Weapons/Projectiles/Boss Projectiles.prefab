@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4850568482653592519}
   - component: {fileID: 6792995550019763951}
   - component: {fileID: 8779940421968783956}
-  - component: {fileID: 8660622148570673090}
+  - component: {fileID: 4645220617149919788}
   m_Layer: 0
   m_Name: Boss Projectiles
   m_TagString: Untagged
@@ -137,7 +137,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &8660622148570673090
+--- !u!114 &4645220617149919788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3221770653912877012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b418924c231b3346a85f673583ec5f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e72702a9b1bc1f45b2c6eb294009aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RB: {fileID: 8779940421968783956}
