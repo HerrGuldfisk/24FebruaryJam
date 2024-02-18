@@ -28,7 +28,9 @@ public class EyeBossController : EnemyController
     public BossProjectile DefaultProjectile;
 
     private float timeStamp;
-    private float cooldownPeriodInSeconds = 2f;
+    private float cooldownPeriodInSeconds;
+    private int burstCount;
+    float rotOffset = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -108,17 +110,25 @@ public class EyeBossController : EnemyController
     void PhaseOneToTwo()
     {
         Debug.Log("PhaseOneToTwo");
+        burstCount = 4;
+        rotOffset = 0;
+        cooldownPeriodInSeconds = 1.5f;
+
         Vector3 moveBody = new Vector3 (0, 0.8f, 0);
-       if(BodyOneGO != null)
-       {
+        if(BodyOneGO != null)
+        {
             BodyOneGO.gameObject.SetActive(false);
 
             EyeGO.transform.position -= moveBody;
-       }
+        }
     }
 
     void PhaseTwoToThree()
     {
+        burstCount = 6;
+        rotOffset = 0;
+        cooldownPeriodInSeconds = 1f;
+
         Vector3 moveBody = new Vector3(0, 0.8f, 0);
         if (BodyTwoGO != null)
         {
@@ -130,6 +140,10 @@ public class EyeBossController : EnemyController
 
     void PhaseThreeToFour()
     {
+        burstCount = 10;
+        rotOffset = 0;
+        cooldownPeriodInSeconds = 0.5f;
+
         Vector3 moveBody = new Vector3(0, 0.8f, 0);
         if (BodyThreeGO != null)
         {
@@ -166,29 +180,25 @@ public class EyeBossController : EnemyController
 
     void PhaseOne()
     {
-        if (timeStamp <= Time.time)
-        {
-            BossProjectile projectile = ObjectPooler.DequeuObject<BossProjectile>("BossDefaultProjectile");
-            projectile.transform.position = transform.position;
-            projectile.transform.rotation = Quaternion.identity;
-            projectile.Damage = DefaultGun.Damage.Value;
-            projectile.RB.linearVelocity = Vector3.forward * DefaultGun.ProjectileSpeed.Value;
-            projectile.gameObject.SetActive(true);
 
-            timeStamp = Time.time + cooldownPeriodInSeconds;
-        }
     }
 
     void PhaseTwo()
     {
         if (timeStamp <= Time.time)
         {
-            BossProjectile projectile = ObjectPooler.DequeuObject<BossProjectile>("BossDefaultProjectile");
-            projectile.transform.position = transform.position;
-            projectile.transform.rotation = Quaternion.identity;
-            projectile.Damage = DefaultGun.Damage.Value;
-            projectile.RB.linearVelocity = Vector3.forward * DefaultGun.ProjectileSpeed.Value;
-            projectile.gameObject.SetActive(true);
+            for (int i = 0; i < burstCount; i++)
+            {
+                BossProjectile projectile = ObjectPooler.DequeuObject<BossProjectile>("BossDefaultProjectile");
+                projectile.transform.position = transform.position;
+                projectile.transform.rotation = Quaternion.identity;
+                projectile.Damage = DefaultGun.Damage.Value;
+                var rot = Quaternion.AngleAxis(360/burstCount * i + rotOffset, Vector3.up);
+                projectile.RB.linearVelocity =  rot * Vector3.forward * (DefaultGun.ProjectileSpeed.Value/4);
+                projectile.gameObject.SetActive(true);
+            }
+
+            rotOffset += 10;
 
             timeStamp = Time.time + cooldownPeriodInSeconds;
         }
@@ -196,11 +206,43 @@ public class EyeBossController : EnemyController
 
     void PhaseThree()
     {
-        
+        if (timeStamp <= Time.time)
+        {
+            for (int i = 0; i < burstCount; i++)
+            {
+                BossProjectile projectile = ObjectPooler.DequeuObject<BossProjectile>("BossDefaultProjectile");
+                projectile.transform.position = transform.position;
+                projectile.transform.rotation = Quaternion.identity;
+                projectile.Damage = DefaultGun.Damage.Value;
+                var rot = Quaternion.AngleAxis(360/burstCount * i + rotOffset, Vector3.up);
+                projectile.RB.linearVelocity = rot * Vector3.forward * (DefaultGun.ProjectileSpeed.Value/4);
+                projectile.gameObject.SetActive(true);
+            }
+
+            rotOffset += 5;
+
+            timeStamp = Time.time + cooldownPeriodInSeconds;
+        }
     }
 
     void PhaseFour()
     {
-        
+        if (timeStamp <= Time.time)
+        {
+            for (int i = 0; i < burstCount; i++)
+            {
+                BossProjectile projectile = ObjectPooler.DequeuObject<BossProjectile>("BossDefaultProjectile");
+                projectile.transform.position = transform.position;
+                projectile.transform.rotation = Quaternion.identity;
+                projectile.Damage = DefaultGun.Damage.Value;
+                var rot = Quaternion.AngleAxis(360/burstCount * i + rotOffset, Vector3.up);
+                projectile.RB.linearVelocity = rot * Vector3.forward * (DefaultGun.ProjectileSpeed.Value / 4);
+                projectile.gameObject.SetActive(true);
+            }
+
+            rotOffset += 2;
+
+            timeStamp = Time.time + cooldownPeriodInSeconds;
+        }
     }
 }
