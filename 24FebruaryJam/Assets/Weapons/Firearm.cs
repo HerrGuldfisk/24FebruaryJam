@@ -7,11 +7,18 @@ public class Firearm : MonoBehaviour
 {
     Vector3 inputDirection = Vector2.zero;
     float inputMagnitude = 0f;
+    PlayerStats playerStats;
 
     public DefaultGun DefaultGun {  get; private set; } = new DefaultGun();
     public Projectile DefaultProjectile;
     private float DefaultGunCooldown = 0;
-    
+
+
+    private void Start()
+    {
+        playerStats = GetComponentInParent<PlayerControllerScript>().playerStats;
+    }
+
     public void OnLook(InputValue input)
     {
         Vector2 newInput = input.Get<Vector2>();
@@ -39,7 +46,7 @@ public class Firearm : MonoBehaviour
             projectile.transform.rotation = Quaternion.LookRotation(inputDirection.normalized);
             projectile.Damage = DefaultGun.Damage.Value;
             projectile.RB.linearVelocity = inputDirection.normalized * DefaultGun.ProjectileSpeed.Value;
-            DefaultGunCooldown = Time.time + DefaultGun.Cooldown.Value;
+            DefaultGunCooldown = Time.time + (DefaultGun.Cooldown.Value * playerStats.BaseAttackSpeed.Value);
             projectile.gameObject.SetActive(true);
         }
     }
